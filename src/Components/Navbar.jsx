@@ -5,7 +5,7 @@ import { IoIosNotifications } from "react-icons/io";
 import Avatar from "react-avatar";
 import { CiVideoOn } from "react-icons/ci";
 const Navbar = () => {
-    return (<div className="flex justify-between ">
+    return (<div className="flex justify-between fixed bg-white w-full">
         <div className=" flex items-center justify-between  w-[10%]">
             <GiHamburgerMenu className='ml-2 ' size={"24px"} />
             <div><img className='w-20 py-2' src="https://imgs.search.brave.com/L8Uc0Y8Zs2sO_dSbYLFamzQu1iYYCSrwmTY_gtypaqE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/bW9zLmNtcy5mdXR1/cmVjZG4ubmV0Lzhn/emNyNlJwR1N0dlpG/QTJxUnQ0djYtMzIw/LTgwLmpwZw" alt="yt logo" />
