@@ -2,6 +2,7 @@ import React from 'react'
 import { IoMdHome } from "react-icons/io";
 import { SiYoutubeshorts } from "react-icons/si";
 import { MdSubscriptions } from "react-icons/md";
+import { useSelector } from 'react-redux';
 export const Sidebar = () => {
     const sidebarItems = [
         { id: 1, icon: <IoMdHome size={"20px"} />, title: "Home" },
@@ -39,12 +40,14 @@ export const Sidebar = () => {
         { id: 16, icon: <SiYoutubeshorts size={"20px"} />, title: "Shorts" },
         { id: 17, icon: <MdSubscriptions size={"20px"} />, title: "Subscription" },
     ]
+    const open=useSelector((store)=>store.app.open)
+console.log(open)
     return (
-        <div className='pl-1 mt-20 ml-6 mr-2 w-[18%] overflow-y-scroll h-[calc(100vh-4.625rem)]  justify-center '>
+        <div className={`pl-1 mt-20   ${open?'w-[14%]':'w-[8%]' }} overflow-y-scroll h-[calc(100vh-4.625rem)]  justify-center `}>
             {sidebarItems.map((item) =>
-            (<div key={item.id} className='flex my-1.5'>
+            (<div key={item.id} className='flex my-2 mx-2 '>
                 {item.icon}
-                <p className='mx-2'>{item.title}</p>
+                <p className={`mx-5 ${open?"":'hidden'} `}>{item.title}</p>
             </div>)
             )
             }
