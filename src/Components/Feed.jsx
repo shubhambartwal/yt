@@ -4,7 +4,7 @@ import VideoContainer from './VideoContainer'
 
 const Feed = () => {
   return (
-    <div className=''>
+    <div className='mx-5'>
         <ButtonList/>
     <VideoContainer/>
     </div>

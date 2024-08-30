@@ -29,9 +29,9 @@ const people = [
 
 const ButtonList = () => {
     return (
-        <div className='mt-20 pt-2'>
+        <div className='mt-20 py-2'>
             {people.map((item) =>
-                <button className ="border rounded-lg  bg-slate-500 py-1 px-4 font-medium" key ={item.id}>{item.name}</button>
+                <button className =" border rounded-lg  bg-slate-400  px-4 mx-2  text-balance" key ={item.id}>{item.name}</button>
             )}
         </div>
     )
