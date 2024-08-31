@@ -1,15 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Avatar from "react-avatar";
-const VideoCard = () => {
+import axios from 'axios';
+import { API_KEY } from '../Constants/youtube';
+const VideoCard = ({ item }) => {
+    const [channelData, setChannelData] = useState([])
+    const getYoutubechannelName = async () => {
+        try {
+            const res = await axios.get(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${item.snippet.channelId}&key=${API_KEY}`)
+            console.log(res.data.items[0].snippet)
+            setChannelData(res.data.items[0].snippet)
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+    useEffect(() => { getYoutubechannelName() }, [])
     return (
-        <div className=' cursor-pointer'>
-            <img className="rounded-xl " src='https://imgs.search.brave.com/pOaBQnGdotrnHtF_0NMASNCS6LazIYQ19AmbcrWTQmE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/dGVjaHNtaXRoLmNv/bS9ibG9nL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIxLzAyL1RT/Qy10aHVtYm5haWwt/ZXhhbXBsZS0xMDI0/eDU3Ni5wbmc' alt=" tumnail" />
+        <div className='w-full cursor-pointer'>
+            <img className=" w-full " src={item.snippet.thumbnails.medium.url} alt='https://imgs.search.brave.com/pOaBQnGdotrnHtF_0NMASNCS6LazIYQ19AmbcrWTQmE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/dGVjaHNtaXRoLmNv/bS9ibG9nL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIxLzAyL1RT/Qy10aHVtYm5haWwt/ZXhhbXBsZS0xMDI0/eDU3Ni5wbmc' />
             <div>
                 <div className='flex mt-2 '>
-                    <Avatar className='' src="https://imgs.search.brave.com/m3AjEyYqrqs66D2V3HzEOVsAP9yRCKGsKsLCf-_NFgo/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA0LzYyLzYzLzY1/LzM2MF9GXzQ2MjYz/NjUwMl85Y0RBWXV5/VnZCWTRxWUpsSGpX/N3ZxYXI1SFlTOGg4/eC5qcGc" size={"32px"} round={true} />
-                    <div className='ml-2'>
-                        <h1 className='font-bold'>Video Title is here abcdsdfsdf </h1>
-                        <p className='text-small text-gray-500'>Shubham Bartwal</p>
+                    <div className=' w-[15%] justify-center align-middle '>
+                        <Avatar className='pl-0 left-0 m-2' src={channelData.thumbnails.high.url} size={'34px'}  round={true} />
+                    </div>
+                    <div className='ml-2 '>
+                        <h1 className='flex font-bold p-1'>{item.snippet.title} </h1>
+                        <p className='flex text-small text-gray-500'>{item.snippet.channelTitle}</p>
                     </div>
 
                 </div>

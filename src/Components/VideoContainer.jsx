@@ -19,9 +19,9 @@ const VideoContainer = () => {
         fetchYoutubeVideo()
     }, [])
     return (
-        <div className="grid grid-cols-3 gap-3 py-2">
-          {  videos.map(()=>{
-                return <VideoCard />
+        <div className="grid grid-cols-3 gap-8 ">
+          {  videos.map((item)=>{
+                return <VideoCard key={item.id} item={item}/>
             })
         }
 

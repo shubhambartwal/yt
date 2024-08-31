@@ -43,7 +43,7 @@ export const Sidebar = () => {
     const open=useSelector((store)=>store.app.open)
 console.log(open)
     return (
-        <div className={`left-0 relative  mt-20  ${open?'w-[24%]':'w-[8%]'} overflow-y-scroll h-[calc(100vh-4.625rem)]  justify-center`}>
+        <div className={`left-0  mt-20  ${open?'w-[30%]':'w-[8%]'} overflow-y-scroll h-[calc(100vh-4.625rem)]  overflow-x-auto justify-center`}>
             {sidebarItems.map((item) =>
             (<div key={item.id} className='flex my-2 mx-2 '>
                 {item.icon}
