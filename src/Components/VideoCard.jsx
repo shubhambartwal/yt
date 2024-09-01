@@ -7,10 +7,10 @@ const VideoCard = ({ item }) => {
     const getYoutubechannelName = async () => {
         try {
             const res = await axios.get(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${item.snippet.channelId}&key=${API_KEY}`)
-            console.log(res.data.items[0].snippet)
-            setChannelData(res.data.items[0].snippet)
+            // console.log(res.data.items[0].snippet)
+            setChannelData(res.data.items[0].snippet.thumbnails.high.url)
         } catch (error) {
-            console.log(error)
+            console.log(`errror from thumnail,${error}`)
         }
 
     }
@@ -21,7 +21,7 @@ const VideoCard = ({ item }) => {
             <div>
                 <div className='flex mt-2 '>
                     <div className=' w-[15%] justify-center align-middle '>
-                        <Avatar className='pl-0 left-0 m-2' src={channelData.thumbnails.high.url} size={'34px'}  round={true} />
+                        <Avatar className='pl-0 left-0 m-2' src={channelData} size={'34px'}  round={true} />
                     </div>
                     <div className='ml-2 '>
                         <h1 className='flex font-bold p-1'>{item.snippet.title} </h1>
