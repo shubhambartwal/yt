@@ -24,7 +24,7 @@ const VideoCard = ({ item }) => {
                         <Avatar className='pl-0 left-0 m-2' src={channelData} size={'34px'}  round={true} />
                     </div>
                     <div className='ml-2 '>
-                        <h1 className='flex font-bold p-1'>{item.snippet.title} </h1>
+                        <h1 className='flex font-bold '>{item.snippet.title} </h1>
                         <p className='flex text-small text-gray-500'>{item.snippet.channelTitle}</p>
                     </div>
 
